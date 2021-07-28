@@ -64,7 +64,7 @@
     width: 100%;
     flex-flow: row-reverse wrap;
     justify-content: center;
-    margin-top: 20vh;
+    margin-top: 0;
   }
 
   #shot-logo {
