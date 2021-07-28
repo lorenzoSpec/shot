@@ -23,121 +23,7 @@
 
 /* ===============================================
 
-  PRE LOADER
-
-   ===============================================*/
-
-#loader-div {
-    background-color: white;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 100000000;
-  }
-  
-  #loader-cont {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: circle 0.7s infinite forwards;
-  }
-  
-  @keyframes circle {
-    to {
-      transform: rotate(360deg);
-    }
-  }
-  
-  #big-circle {
-    background-image: radial-gradient(#2B2567, black);
-    width: 30px;
-    height:30px;
-    border-radius: 50%;
-    margin: 5px;
-    z-index: 100000001;
-  }
-  
-  .small-circle {
-    background-image: radial-gradient(#2B2567, black);
-    width: 6px;
-    height:20px;
-    border-radius: 50%;
-    z-index: 100000001;
-  }
-
-/* ===============================================
-
-    HERO SECTION
-
-  ===============================================*/
-
-
-#body {
-  height: 100vh;
-  overflow: hidden;
-}
-
-#hero-section {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-#shot-logo {
-  width: 50px;
-  position: absolute;
-  top: 20px;
-  left: 20px;
-}
-
-#cart {
-  font-size: 16px;
-  font-family: 'Roboto-Slab', sans-serif;
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 100;
-}
-
-#img-hero {
-  width: 250px;
-  margin-top: 10vh;
-}
-
-#title-cont {
-  width: 90%;
-}
-
-#title {
-  font-size: 30px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 900;
-  text-align: center;
-}
-
-#sub-title {
-  font-size: 16px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 300;
-  text-align: center;
-}
-
-#instruction {
-  font-size: 13px;
-  font-family: 'Roboto Slab', sans-serif;
-  font-weight: 300;
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-/* ===============================================
-
-    ALPHA
+    PRODUCTS SECTIONS
 
   ===============================================*/
 
@@ -145,13 +31,14 @@
   width: 100%;
   height: 100vh;
   scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
   overflow-y: scroll;
 }
 
 .el {
   width: 100%;
   height: 100vh;
-  scroll-snap-align: start;
+  scroll-snap-align: center;
 }
 
 #alpha-cont {
@@ -173,8 +60,6 @@
   background: linear-gradient(to top, var(--dark-omega) 0%, var(--omega) 40%, white 60%);
   position: relative;
 }
-
-
 
 .smalle-desc {
   font-family: 'Montserrat', monospace, sans-serif;

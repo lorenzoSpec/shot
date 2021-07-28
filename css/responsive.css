@@ -15,13 +15,13 @@
 
 
   #shot-logo {
-    top: 15px;
-    left: 20px;
+    top: 25px;
+    left: 25px;
   }
 
   #cart {
-    top: 15px;
-    right: 20px;
+    top: 25px;
+    right: 25px;
   }
 
   #img-hero {
@@ -42,6 +42,31 @@
 
   #instruction {
     font-size: 16px;
+  }
+
+  /* ===============================================
+
+    PRODUCTS SECTIONS
+
+  ===============================================*/
+
+  .smalle-desc {
+    top: 25px;
+    left: 25px;
+  }
+  
+  .shade-img {
+    width: 350px;
+  }
+  
+  .shade-name {
+    font-size: 35px;
+    transform: translate(-50%, 200%);
+  }
+  
+  .price {
+    bottom: 25px;
+    right: 25px;
   }
 }
 
@@ -69,13 +94,13 @@
 
   #shot-logo {
     width: 70px;
-    top: 15px;
-    left: 20px;
+    top: 35px;
+    left: 35px;
   }
 
   #cart {
-    top: 15px;
-    right: 20px;
+    top: 35px;
+    right: 35px;
   }
 
   #img-hero {
@@ -98,5 +123,30 @@
 
   #instruction {
     font-size: 15px;
+  }
+
+  /* ===============================================
+
+    PRODUCTS SECTIONS
+
+  ===============================================*/
+
+  .smalle-desc {
+    top: 35px;
+    left: 35px;
+  }
+  
+  .shade-img {
+    width: 450px;
+  }
+  
+  .shade-name {
+    font-size: 45px;
+    transform: translate(-50%, 200%);
+  }
+  
+  .price {
+    bottom: 35px;
+    right: 35px;
   }
 }
