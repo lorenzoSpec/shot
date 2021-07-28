@@ -1,0 +1,67 @@
+/*  img animation for smaller screens  */
+.animate-hero {
+  animation: animate-hero 0.4s ease-out forwards;
+}
+
+@keyframes animate-hero {
+  from {
+    transform: translateY(-50%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/*  img animation for larger screens  */
+.animate-hero-two {
+  animation: animate-hero-two 0.4s ease-out forwards;
+}
+
+@keyframes animate-hero-two {
+  from {
+    transform: translateX(80%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/*  title animation for samller screens  */
+.animate-hero-title {
+  animation: animate-hero-title 0.4s ease-out forwards;
+}
+
+@keyframes animate-hero-title {
+  from {
+    transform: translateY(80%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/*  title animation for larger screens  */
+.animate-hero-title-two {
+  animation: animate-hero-title-two 0.4s ease-out forwards;
+}
+
+@keyframes animate-hero-title-two {
+  from {
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

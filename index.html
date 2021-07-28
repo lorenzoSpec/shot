@@ -6,7 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>E-Commerce</title>
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/pre-load.css">
+  <link rel="stylesheet" href="css/hero-section.css">
   <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/animation.css">
+  <script src="js/pre-load.js"></script>
 </head>
 <body id='body'>
   <div id="loader-div">
@@ -16,17 +20,75 @@
       <div class='small-circle'></div>
     </div>
   </div>
-  <section id='hero-section'>
-    <img id='shot-logo' src="img/shot-logo.png" alt="Shot Logo">
-    <p id='cart'>Cart(0)</p>
-    <img id='img-hero' src="img/img-hero.png" alt="Different Shades">
-    <div id='title-cont'>
-      <h1 id='title'>Level up your fashion</h1>
-      <p id='sub-title'>Colored shades that will
-      make your fashion truly amazing.</p>
+
+  <p id='cart'>Cart(0)</p>
+
+  <div id='cont'>
+    <section id='hero-section' class="el">
+      <img id='shot-logo' src="img/shot-logo.png" alt="Shot Logo">
+      <img id='img-hero' src="img/img-hero.png" alt="Different Shades">
+      <div id='title-cont'>
+        <h1 id='title'>Level up your fashion</h1>
+        <p id='sub-title'>Colored shades that will
+        make your fashion truly amazing.</p>
+      </div>
+      <p id='instruction'>Scroll to discover</p>
+    </section>
+
+    <div id='alpha-cont' class="el">
+      <p class="smalle-desc">
+        <strong>Lens Shape:</strong>  Butterfly <br/>
+        <strong>Lens Color:</strong> Blue <br/>
+        <strong>Frame Material:</strong> Plastic <br/>
+        Polarized Protection <br/>
+        <strong>UV/UVB Protection</strong>
+      </p>
+      <img src="img/blue-glass.png" class="shade-img" alt="Blue Shade">
+      <h2 class='shade-name'>ALPHA</h2>
+      <p class='price'> &#36;5.00</p>
     </div>
-    <p id='instruction'>Scroll to discover</p>
-  </section>
-  <script src="js/pre-load.js"></script>
+  
+    <div id='beta-cont' class="el">
+      <p class="smalle-desc">
+        <strong>Lens Shape:</strong>  Butterfly <br/>
+        <strong>Lens Color:</strong> Red <br/>
+        <strong>Frame Material:</strong> Plastic <br/>
+        Polarized Protection <br/>
+        <strong>UV/UVB Protection</strong>
+      </p>
+      <img src="img/red-glass.png" class="shade-img" alt="Blue Shade">
+      <h2 class='shade-name'>BETA</h2>
+      <p class='price'> &#36;5.00</p>
+    </div>
+  
+    <div id='delta-cont' class="el">
+      <p class="smalle-desc">
+        <strong>Lens Shape:</strong>  Butterfly <br/>
+        <strong>Lens Color:</strong> Purple <br/>
+        <strong>Frame Material:</strong> Plastic <br/>
+        Polarized Protection <br/>
+        <strong>UV/UVB Protection</strong>
+      </p>
+      <img src="img/purple-glass.png" class="shade-img" alt="Blue Shade">
+      <h2 class='shade-name'>DELTA</h2>
+      <p class='price'> &#36;5.00</p>
+    </div>
+  
+    <div id='omega-cont' class="el">
+      <p class="smalle-desc">
+        <strong>Lens Shape:</strong>  Butterfly <br/>
+        <strong>Lens Color:</strong> Orange <br/>
+        <strong>Frame Material:</strong> Plastic <br/>
+        Polarized Protection <br/>
+        <strong>UV/UVB Protection</strong>
+      </p>
+      <img src="img/orange-glass.png" class="shade-img" alt="Blue Shade">
+      <h2 class='shade-name'>OMEGA</h2>
+      <p class='price'> &#36;5.00</p>
+    </div>
+  </div>
+
+  <script src="js/hero-section.js"></script>
+  <script src='js/discover-products.js'></script>
 </body>
 </html>
