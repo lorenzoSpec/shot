@@ -68,6 +68,32 @@
     bottom: 25px;
     right: 25px;
   }
+
+  /* ===============================================
+
+    MORE INFO
+
+  ===============================================*/
+
+  #img-more-info {
+    margin: 50px;
+  }
+
+  #plus-minus-more-info, #h-more-info {
+    margin: 0 0 50px 50px;
+  }
+
+  #divbuyprice-more-info {
+    margin-left: 50px;
+  }
+
+  #basic-desc-moe-info {
+    margin: 50px 0 20px 50px;
+  }
+
+  #morep-more-info {
+    margin: 20px 0 100px 50px;
+  }
 }
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -149,4 +175,31 @@
     bottom: 35px;
     right: 35px;
   }
+
+   /* ===============================================
+
+    MORE INFO
+
+  ===============================================*/
+
+  #img-more-info {
+    margin: 100px 0 50px 200px;
+  }
+
+  #plus-minus-more-info, #h-more-info {
+    margin: 0px 0 50px 200px;
+  }
+
+  #divbuyprice-more-info {
+    margin-left: 200px;
+  }
+
+  #basic-desc-moe-info {
+    margin: 50px 0 50px 200px;
+  }
+
+  #morep-more-info {
+    margin: 50px 0 50px 200px;
+  }
+
 }

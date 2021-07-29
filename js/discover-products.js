@@ -38,11 +38,6 @@ function addClass(elTop, nameEL){
       nameEL[y][1].children[1].classList.add('anmtn');
       nameEL[y][1].children[2].classList.add('anmtnH');
       nameEL[y][1].children[3].classList.add('anmtnPrice');
-
-        /*nameEL[y][1].children[0].classList.remove('anmtnDesc');
-        nameEL[y][1].children[1].classList.remove('anmtn');
-        nameEL[y][1].children[2].classList.remove('anmtnH');
-        nameEL[y][1].children[3].classList.remove('anmtnPrice');*/
     }
   });
 }
@@ -54,11 +49,14 @@ function removeClass(elTop, nameEL) {
       historyScrolled.push(nameEL[y][1]);
       if(historyScrolled.length >= 2){
         let recent = historyScrolled[historyScrolled.length - 2];
-
-        recent.children[0].classList.remove('anmtnDesc');
-        recent.children[1].classList.remove('anmtn');
-        recent.children[2].classList.remove('anmtnH');
-        recent.children[3].classList.remove('anmtnPrice');
+        let current = historyScrolled[historyScrolled.length - 1];
+        
+        if(recent !== current){
+          recent.children[0].classList.remove('anmtnDesc');
+          recent.children[1].classList.remove('anmtn');
+          recent.children[2].classList.remove('anmtnH');
+          recent.children[3].classList.remove('anmtnPrice');
+        }
       }
     }
   });

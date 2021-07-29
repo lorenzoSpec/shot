@@ -136,3 +136,50 @@
     opacity: 1;
   }
 }
+
+/* More info image animation */
+@keyframes more-info-img {
+  from{
+    transform: translateY(-50%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* More info many animtaion */
+@keyframes more-info-many {
+  to {
+    opacity: 1;
+  }
+}
+
+/* More info name animtaion */
+@keyframes more-info-name {
+  to {
+    opacity: 1;
+  }
+}
+
+/* More info buy animtaion */
+@keyframes more-info-buy {
+  to {
+    opacity: 1;
+  }
+}
+
+/* More info desciption animtaion */
+@keyframes more-info-description {
+  to {
+    opacity: 1;
+  }
+}
+
+/* More info lorem animtaion */
+@keyframes more-info-lorem {
+  to {
+    opacity: 1;
+  }
+}
