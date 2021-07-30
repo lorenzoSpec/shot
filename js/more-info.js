@@ -1,51 +1,34 @@
+import { cart } from './cart.js';
+
+let eOne = null;
+let eTwo = null;
+
 /* show the more info for product */
 function moreInfo(which){
   let dataP = dataProducts();
+
   moreInfoDom(which, dataP);
+
 }
 
 /* more info DOM made */
 function moreInfoDom(which, dataP){
-  const BODY = document.getElementById('body');
   let srcImg = dataP[which][0];
   let nameP = dataP[which][1];
   let colorP = dataP[which][2];
 
+  const BODY = document.getElementById('body');
+  const FOOT = footerDom();
+  const IMG = imgItem(srcImg, 'more-info');
+  const NAMEFORITEM = nameForItem(nameP, 'more-info');
+
   const CONTAINER = document.createElement('div');
   CONTAINER.setAttribute('id', 'container-more-info');
 
-  const BACK = document.createElement('p');
-  const BACKTXT = document.createTextNode('Back');
-  BACK.appendChild(BACKTXT);
+  const BACK = document.createElement('img');
   BACK.setAttribute('id', 'back-more-info');
-  BACK.addEventListener('click', function(){backP(BODY, CONTAINER)});
-  
-  const IMG = document.createElement('img');
-  IMG.setAttribute('src', srcImg);
-  IMG.setAttribute('id', 'img-more-info');
-
-  const MANY = document.createElement('div');
-  MANY.setAttribute('id', 'plus-minus-more-info');
-
-  const MINUS = document.createElement('p');
-  const MINUSTXT = document.createTextNode('-');
-  MINUS.appendChild(MINUSTXT);
-  MINUS.setAttribute('id', 'minus-more-info');
-
-  const NUM = document.createElement('p');
-  const NUMTXT = document.createTextNode('1');
-  NUM.appendChild(NUMTXT);
-  NUM.setAttribute('id', 'num-more-info');
-
-  const PLUS = document.createElement('p');
-  const PLUSTXT = document.createTextNode('+');
-  PLUS.appendChild(PLUSTXT);
-  PLUS.setAttribute('id', 'plus-more-info');
-
-  const H3 = document.createElement('h3');
-  const H3TXT = document.createTextNode(nameP);
-  H3.appendChild(H3TXT);
-  H3.setAttribute('id', 'h-more-info');
+  BACK.setAttribute('src', 'img/shot-logo.png');
+  BACK.addEventListener('click', eOne = backP.bind(this, BACK, BODY, CONTAINER));
 
   const DIVBUYPRICE = document.createElement('div');
   DIVBUYPRICE.setAttribute('id', 'divbuyprice-more-info');
@@ -54,6 +37,7 @@ function moreInfoDom(which, dataP){
   const BUY = document.createTextNode('BUY');
   BUTTON.appendChild(BUY);
   BUTTON.setAttribute('id', 'buy-more-info');
+  BUTTON.addEventListener('click', eTwo = cart.bind(this, srcImg, nameP));
 
   const PRICE = document.createElement('p');
   const FIVED = document.createTextNode('$5.00');
@@ -112,47 +96,75 @@ function moreInfoDom(which, dataP){
   MOREP.appendChild(MOREPTEXT);
   MOREP.setAttribute('id', 'morep-more-info');
 
-  const FOOTER = document.createElement('footer');
-  FOOTER.setAttribute('id', 'footer');
-
-  const CREDITS = document.createElement('a');
-  const CREDITSTXT = document.createTextNode('Credits');
-  CREDITS.appendChild(CREDITSTXT);
-  CREDITS.setAttribute('href', 'google.com');
-
-  const TANDS = document.createElement('a');
-  const TANDSTXT = document.createTextNode('Terms and Service');
-  TANDS.appendChild(TANDSTXT);
-  TANDS.setAttribute('href', 'google.com');
-
-  const PRIVACY = document.createElement('a');
-  const PRIVACYTXT = document.createTextNode('Privacy and Policy');
-  PRIVACY.appendChild(PRIVACYTXT);
-  PRIVACY.setAttribute('href', 'google.com');
-
-  const COPYRIGHT = document.createElement('p');
-  const COPYRIGHTTXT = document.createTextNode('Copyright 2021 - John Erwin Lorenzo');
-  COPYRIGHT.appendChild(COPYRIGHTTXT);
-  COPYRIGHT.setAttribute('id', 'copyright-more-info');
-
-  const LINE = document.createElement('hr');
-  LINE.setAttribute('id', 'line');
-
   CONTAINER.appendChild(BACK);
   CONTAINER.appendChild(IMG);
-  CONTAINER.appendChild(MANY);
-  CONTAINER.appendChild(H3);
+  CONTAINER.appendChild(NAMEFORITEM);
   CONTAINER.appendChild(DIVBUYPRICE);
   CONTAINER.appendChild(BASICDESCRIPTION);
   CONTAINER.appendChild(MOREP);
-  CONTAINER.appendChild(FOOTER);
-
-  MANY.appendChild(MINUS);
-  MANY.appendChild(NUM);
-  MANY.appendChild(PLUS);
+  CONTAINER.appendChild(FOOT);
 
   DIVBUYPRICE.appendChild(BUTTON);
   DIVBUYPRICE.appendChild(PRICE);
+
+  BODY.appendChild(CONTAINER);
+}
+
+/* name for item */
+function nameForItem(nameP, where){
+  const H3 = document.createElement('h3');
+  const H3TXT = document.createTextNode(nameP);
+  
+  if(where === 'more-info'){
+    H3.setAttribute('id', 'h-more-info');
+  } else {
+    H3.setAttribute('id', 'cart-h');
+  }
+
+  H3.appendChild(H3TXT);
+
+  return H3;
+}
+
+/* image of items */
+function imgItem(srcImg, whereCalled){
+  const IMG = document.createElement('img');
+
+  IMG.setAttribute('src', srcImg);
+
+  if(whereCalled === 'more-info'){
+    IMG.setAttribute('id', 'img-more-info');
+  } else {
+    IMG.setAttribute('id', 'cart-img');
+  }
+
+  return IMG;
+}
+
+/* MAKE FOOTER DOM */
+function footerDom(){
+  const FOOTER = document.createElement('footer');
+  const CREDITS = document.createElement('a');
+  const CREDITSTXT = document.createTextNode('Credits');
+  const TANDS = document.createElement('a');
+  const TANDSTXT = document.createTextNode('Terms and Service');
+  const PRIVACY = document.createElement('a');
+  const PRIVACYTXT = document.createTextNode('Privacy and Policy');
+  const COPYRIGHT = document.createElement('p');
+  const COPYRIGHTTXT = document.createTextNode('Copyright 2021 - John Erwin Lorenzo');
+  const LINE = document.createElement('hr');
+
+  FOOTER.setAttribute('class', 'footer');
+  CREDITS.setAttribute('href', 'google.com');
+  TANDS.setAttribute('href', 'google.com');
+  PRIVACY.setAttribute('href', 'google.com');
+  COPYRIGHT.setAttribute('class', 'copyright-more-info');
+  LINE.setAttribute('class', 'line');
+
+  CREDITS.appendChild(CREDITSTXT);
+  TANDS.appendChild(TANDSTXT);
+  PRIVACY.appendChild(PRIVACYTXT);
+  COPYRIGHT.appendChild(COPYRIGHTTXT);
 
   FOOTER.appendChild(CREDITS);
   FOOTER.appendChild(TANDS);
@@ -160,7 +172,7 @@ function moreInfoDom(which, dataP){
   FOOTER.appendChild(LINE);
   FOOTER.appendChild(COPYRIGHT);
 
-  BODY.appendChild(CONTAINER);
+  return FOOTER;
 }
 
 /* containing data about the products */
@@ -175,8 +187,9 @@ function dataProducts(){
   return data;
 }
 
-function backP(BODY, CONTAINER){
+function backP(BACK, BODY, CONTAINER){
   BODY.removeChild(CONTAINER);
+  BACK.removeEventListener('click', eOne);
 }
 
 /* event listeners */
@@ -188,5 +201,10 @@ function eventList(){
     SHADEIMG[i].addEventListener('click', function(){moreInfo(this.parentNode.id)});
     SHADENAME[i].addEventListener('click', function(){moreInfo(this.parentNode.id)});
   }
+
+  
 }
 eventList();
+
+
+export { footerDom, imgItem, nameForItem };
