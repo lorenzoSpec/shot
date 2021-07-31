@@ -1,7 +1,9 @@
 import { cart } from './cart.js';
+import { savedBuy } from './buy-save.js'
 
 let eOne = null;
 let eTwo = null;
+let eThree = null;
 
 /* show the more info for product */
 function moreInfo(which){
@@ -38,6 +40,7 @@ function moreInfoDom(which, dataP){
   BUTTON.appendChild(BUY);
   BUTTON.setAttribute('id', 'buy-more-info');
   BUTTON.addEventListener('click', eTwo = cart.bind(this, srcImg, nameP));
+  BUTTON.addEventListener('click', eThree = savedBuy.bind(this, srcImg, nameP));
 
   const PRICE = document.createElement('p');
   const FIVED = document.createTextNode('$5.00');
