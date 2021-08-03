@@ -153,7 +153,7 @@ function footerDom(){
   const PRIVACY = document.createElement('a');
   const PRIVACYTXT = document.createTextNode('Privacy and Policy');
   const COPYRIGHT = document.createElement('p');
-  const COPYRIGHTTXT = document.createTextNode('Copyright 2021 - John Erwin Lorenzo');
+  const COPYRIGHTTXT = document.createTextNode('Copyright 2021 - Lorenzo');
   const LINE = document.createElement('hr');
 
   FOOTER.setAttribute('class', 'footer');
