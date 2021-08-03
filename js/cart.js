@@ -1,6 +1,16 @@
 import { footerDom, imgItem, nameForItem } from './more-info.js';
 
-let eOne = null;
+let eTwo = null;
+
+let anyIs = Object.keys(localStorage);
+let arrayOfNameSaved = [];
+for(let i = 0; i < anyIs.length; i++){
+  let dataStr = localStorage.getItem(anyIs[i]);
+  let dataArr = dataStr.split(',');
+
+  arrayOfNameSaved.push(dataArr[1]);
+}
+
 
 /* MAKE THE CART  */
 function cart(srcImg, nameP){
@@ -10,7 +20,7 @@ function cart(srcImg, nameP){
   const HOWMANYITEMS = howManyItems();
   const PRICEEL = priceOfItem();
   const REMOVE = removeBtn();
-  const ITEMDIV = itemsDom(ITEMIMG, NAMEFORITEM, HOWMANYITEMS, PRICEEL, REMOVE);
+  const ITEMDIV = itemsDom(ITEMIMG, NAMEFORITEM, HOWMANYITEMS, PRICEEL, REMOVE, 'cart', nameP);
 
   cartDom(ITEMDIV, FOOT);
 }
@@ -21,28 +31,38 @@ function cartDom(ITEMDIV, FOOT){
   const CONTAINER = document.createElement('div');
   const BACK = document.createElement('p');
   const BACKTXT = document.createTextNode('Back');
+  const DIV = document.createElement('div');
   const CHECKOUT = document.createElement('button');
+  const TOTAL = totalPrice();
   const CHECKOUTTXT = document.createTextNode('Check Out');
 
   CONTAINER.setAttribute('id', 'cart-cont');
   BACK.setAttribute('id', 'cart-back');
   CHECKOUT.setAttribute('id', 'cart-checkout');
+  DIV.setAttribute('id', 'div-contain-checkout');
   
   BACK.appendChild(BACKTXT);
   CHECKOUT.appendChild(CHECKOUTTXT);
 
-  CONTAINER.appendChild(BACK);
-  CONTAINER.appendChild(CHECKOUT);
-  CONTAINER.appendChild(FOOT);
-  CONTAINER.insertBefore(ITEMDIV, CONTAINER.firstChild);
+  DIV.appendChild(TOTAL)
+  DIV.appendChild(CHECKOUT);
 
-  BACK.addEventListener('click', eOne = cartBack.bind(this, BACK, BODY, CONTAINER));
+  CONTAINER.appendChild(BACK);
+  CONTAINER.appendChild(DIV);
+  CONTAINER.appendChild(FOOT);
   
+  if(ITEMDIV){
+    CONTAINER.insertBefore(ITEMDIV, CONTAINER.firstChild);
+  }
+
+  BACK.addEventListener('click', cartBack);
+
   BODY.appendChild(CONTAINER);
+  updateTotal();
 }
 
 /* Items DOM  */
-function itemsDom(ITEMIMG, NAMEFORITEM, HOWMANYITEMS, PRICEEL, REMOVE){
+function itemsDom(ITEMIMG, NAMEFORITEM, HOWMANYITEMS, PRICEEL, REMOVE, whereIsCalled, nameP){
   const ITEMCONT = document.createElement('div');
   const FIRSTDIV = document.createElement('div');
   const SECONDDIV = document.createElement('div');
@@ -53,7 +73,7 @@ function itemsDom(ITEMIMG, NAMEFORITEM, HOWMANYITEMS, PRICEEL, REMOVE){
 
   FIRSTDIV.appendChild(ITEMIMG);
   FIRSTDIV.appendChild(NAMEFORITEM);
-  FIRSTDIV.appendChild(HOWMANYITEMS);
+  //FIRSTDIV.appendChild(HOWMANYITEMS);
 
   SECONDDIV.appendChild(PRICEEL);
   SECONDDIV.appendChild(REMOVE)
@@ -61,7 +81,15 @@ function itemsDom(ITEMIMG, NAMEFORITEM, HOWMANYITEMS, PRICEEL, REMOVE){
   ITEMCONT.appendChild(FIRSTDIV);
   ITEMCONT.appendChild(SECONDDIV);
 
-  return ITEMCONT;
+  if(whereIsCalled === 'cart'){
+    if(arrayOfNameSaved.indexOf(nameP) === -1){
+      return ITEMCONT;
+    }
+  } else if ('buy-save'){
+    return ITEMCONT;
+  } else {
+    console.log('What Now');
+  }
 }
 
 /* BUTTONS FOR CHANGING HOW MANY ITEMS USER WILL BUY */
@@ -98,6 +126,42 @@ function priceOfItem(){
   return PRICEP;
 }
 
+/* DOM for total price */
+function totalPrice(){
+  const TOTAL = document.createElement('p');
+  const TOTALTXT = document.createTextNode('Total: $5.00');
+
+  TOTAL.setAttribute('id', 'total-cost');
+
+  TOTAL.appendChild(TOTALTXT);
+
+  return TOTAL;
+}
+
+/* know how manyitems is saved in the local storage */
+function howManyitemsSaved(){
+  let anyIs3 = Object.keys(localStorage);
+  
+  return anyIs3.length;
+}
+
+/* update the tootale price on total p element */
+function updateTotal(){
+  let countTotal = howManyitemsSaved();
+  let totalCostEl = document.getElementById('total-cost');
+
+  totalCostEl.textContent = 'Total: $' + (countTotal * 5) + '.00';
+}
+
+/* to update the cart count on the home */
+function updateCartCount(){
+  let countTotal = howManyitemsSaved();
+  let cartCount = document.getElementById('cart');
+
+  cartCount.textContent= `Cart(${countTotal})`;
+}
+updateCartCount();
+
 /* DOM FOR REMOVE BUTTON */
 function removeBtn(){
   const REMOVEBTN = document.createElement('button');
@@ -107,13 +171,33 @@ function removeBtn(){
 
   REMOVEBTN.appendChild(BTNTXT);
 
+  REMOVEBTN.addEventListener('click', eTwo = toBeRemove.bind(this, REMOVEBTN));
+
   return REMOVEBTN;
 }
 
-/* BACK FROM CART */
-function cartBack(BACK, BODY, CONTAINER){
-  BODY.removeChild(CONTAINER);
-  BACK.removeEventListener('click', eOne);
+function toBeRemove(el){
+  let anyIs2 = Object.keys(localStorage);
+  if(anyIs2.length >= 0){
+    const CNT = document.getElementById('cart-cont');
+    let nameOfProduct =  el.parentNode.parentNode.firstChild.firstChild.nextSibling.textContent;
+
+    for(let i = 0; i < anyIs2.length; i++){
+      let z = anyIs2[i];
+
+      let x = localStorage.getItem(z).split(',')[1];
+      if(x === nameOfProduct){
+        localStorage.removeItem(z);
+        CNT.removeChild(el.parentNode.parentNode);
+        updateTotal();
+      }
+    }
+  }
 }
 
-export {cart};
+/* BACK FROM CART */
+function cartBack(){
+  location.reload();
+}
+
+export {cart, itemsDom, howManyItems, priceOfItem, removeBtn, updateTotal};

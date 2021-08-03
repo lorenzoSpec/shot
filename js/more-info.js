@@ -1,7 +1,6 @@
 import { cart } from './cart.js';
 import { savedBuy } from './buy-save.js'
 
-let eOne = null;
 let eTwo = null;
 let eThree = null;
 
@@ -30,7 +29,7 @@ function moreInfoDom(which, dataP){
   const BACK = document.createElement('img');
   BACK.setAttribute('id', 'back-more-info');
   BACK.setAttribute('src', 'img/shot-logo.png');
-  BACK.addEventListener('click', eOne = backP.bind(this, BACK, BODY, CONTAINER));
+  BACK.addEventListener('click', backP);
 
   const DIVBUYPRICE = document.createElement('div');
   DIVBUYPRICE.setAttribute('id', 'divbuyprice-more-info');
@@ -190,9 +189,8 @@ function dataProducts(){
   return data;
 }
 
-function backP(BACK, BODY, CONTAINER){
-  BODY.removeChild(CONTAINER);
-  BACK.removeEventListener('click', eOne);
+function backP(){
+  location.reload();
 }
 
 /* event listeners */
