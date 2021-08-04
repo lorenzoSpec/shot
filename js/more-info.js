@@ -157,9 +157,9 @@ function footerDom(){
   const LINE = document.createElement('hr');
 
   FOOTER.setAttribute('class', 'footer');
-  CREDITS.setAttribute('href', 'google.com');
-  TANDS.setAttribute('href', 'google.com');
-  PRIVACY.setAttribute('href', 'google.com');
+  CREDITS.setAttribute('href', '../credits.html');
+  TANDS.setAttribute('href', '#');
+  PRIVACY.setAttribute('href', '#');
   COPYRIGHT.setAttribute('class', 'copyright-more-info');
   LINE.setAttribute('class', 'line');
 
